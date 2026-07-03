@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REST vs GraphQL — Tempo de resposta (RQ1)</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; max-width: 820px; margin: 24px auto; padding: 0 16px; color: #1f1f1f; }
+  h1 { font-size: 22px; margin-bottom: 2px; }
+  .sub { color: #666; margin-top: 0; }
+  .cards { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0; }
+  .card { background: #f4f6f8; border-radius: 10px; padding: 12px 16px; min-width: 150px; }
+  .card .lbl { font-size: 12px; color: #666; }
+  .card .val { font-size: 22px; font-weight: bold; }
+  .legenda { display: flex; gap: 16px; margin: 10px 0 6px; font-size: 13px; color: #555; }
+  .legenda span { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+  .wrap { position: relative; width: 100%; height: 380px; }
+  .nota { font-size: 12px; color: #999; margin-top: 12px; }
+  .concl { background: #eef6f2; border-left: 4px solid #1D9E75; padding: 10px 14px; border-radius: 0 8px 8px 0; margin-top: 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+  <h1>REST vs GraphQL — Tempo de resposta (RQ1)</h1>
+  <p class="sub">Tempo médio de resposta (ms) por tipo de consulta</p>
+
+  <div class="cards">
+    <div class="card"><div class="lbl">Média REST</div><div class="val" style="color:#378ADD">68.0 ms</div></div>
+    <div class="card"><div class="lbl">Média GraphQL</div><div class="val" style="color:#1D9E75">368.7 ms</div></div>
+    <div class="card"><div class="lbl">Redução com GraphQL</div><div class="val">-441.9%</div></div>
+    <div class="card"><div class="lbl">p-valor (Wilcoxon)</div><div class="val">1.0000</div></div>
+  </div>
+
+  <div class="legenda">
+    <span><span class="dot" style="background:#378ADD"></span>REST</span>
+    <span><span class="dot" style="background:#1D9E75"></span>GraphQL</span>
+  </div>
+  <div class="wrap">
+    <canvas id="graf_tempo" role="img" aria-label="Barras comparando REST e GraphQL por tipo de consulta"></canvas>
+  </div>
+
+  <div class="concl">
+    <b>RQ1:</b> GraphQL apresentou ms significativamente MAIOR que REST — resultado contrário à hipótese (H1 rejeitada).
+    &nbsp;Tamanho de efeito: Cohen d = 1.022 (grande).
+  </div>
+  <p class="nota">N = 240 medições (120 pares) · teste pareado unicaudal, α = 0.05. Gerado a partir de analise_resumo.json.</p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script>
+    new Chart(document.getElementById('graf_tempo'), {
+      type: 'bar',
+      data: { labels: ["Simples", "Filtrada", "Por ID", "Composta"], datasets: [
+        { label: 'REST',    data: [56.17, 42.26, 76.18, 97.52],  backgroundColor: '#378ADD' },
+        { label: 'GraphQL', data: [321.18, 333.62, 489.17, 330.68], backgroundColor: '#1D9E75' }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: (c) => c.dataset.label + ': ' + c.parsed.y.toLocaleString('pt-BR') + ' ms' } } },
+        scales: { x: { ticks: { autoSkip: false } },
+                  y: { beginAtZero: true, title: { display: true, text: 'Tempo médio de resposta (ms) por tipo de consulta' } } } }
+    });
+  </script>
+</body>
+</html>

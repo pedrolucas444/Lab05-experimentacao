@@ -1,0 +1,115 @@
+{
+  "n_medicoes": 240,
+  "n_pares": 120,
+  "alfa": 0.05,
+  "rq1_tempo": {
+    "rq": "RQ1",
+    "metrica": "tempo_ms",
+    "n_pares": 120,
+    "media_rest": 68.03,
+    "media_graphql": 368.67,
+    "mediana_rest": 43.34,
+    "mediana_graphql": 323.38,
+    "dp_rest": 42.14,
+    "dp_graphql": 290.53,
+    "reducao_pct": -441.9,
+    "skew_dif": -9.657,
+    "kurt_dif": 100.343,
+    "t_stat": -11.192,
+    "t_p": 1.0,
+    "t_p_fmt": "1.0000",
+    "cohen_d": -1.022,
+    "efeito_d": "grande",
+    "w_stat": 0.0,
+    "w_z": -9.506,
+    "w_p": 1.0,
+    "w_p_fmt": "1.0000",
+    "r_efeito": -0.868,
+    "rejeita_h0": false
+  },
+  "rq2_tamanho": {
+    "rq": "RQ2",
+    "metrica": "tamanho_bytes",
+    "n_pares": 120,
+    "media_rest": 26675.75,
+    "media_graphql": 2724.75,
+    "mediana_rest": 15623.5,
+    "mediana_graphql": 3395.0,
+    "dp_rest": 27362.47,
+    "dp_graphql": 1490.37,
+    "reducao_pct": 89.8,
+    "skew_dif": 1.055,
+    "kurt_dif": -0.736,
+    "t_stat": 9.919,
+    "t_p": 1.4443128320304045e-17,
+    "t_p_fmt": "1.44e-17",
+    "cohen_d": 0.905,
+    "efeito_d": "grande",
+    "w_stat": 7260.0,
+    "w_z": 9.506,
+    "w_p": 0.0,
+    "w_p_fmt": "0.00e+00",
+    "r_efeito": 0.868,
+    "rejeita_h0": true
+  },
+  "tempo_por_consulta": {
+    "simples": {
+      "rest_media": 56.17,
+      "graphql_media": 321.18,
+      "rest_dp": 34.96,
+      "graphql_dp": 50.58,
+      "reducao_pct": -471.8
+    },
+    "filtrada": {
+      "rest_media": 42.26,
+      "graphql_media": 333.62,
+      "rest_dp": 10.44,
+      "graphql_dp": 44.44,
+      "reducao_pct": -689.4
+    },
+    "por_id": {
+      "rest_media": 76.18,
+      "graphql_media": 489.17,
+      "rest_dp": 58.09,
+      "graphql_dp": 564.57,
+      "reducao_pct": -542.1
+    },
+    "composta": {
+      "rest_media": 97.52,
+      "graphql_media": 330.68,
+      "rest_dp": 27.97,
+      "graphql_dp": 54.57,
+      "reducao_pct": -239.1
+    }
+  },
+  "tamanho_por_consulta": {
+    "simples": {
+      "rest_media": 19496.0,
+      "graphql_media": 3421.0,
+      "rest_dp": 0.0,
+      "graphql_dp": 0.0,
+      "reducao_pct": 82.5
+    },
+    "filtrada": {
+      "rest_media": 11751.0,
+      "graphql_media": 3369.0,
+      "rest_dp": 0.0,
+      "graphql_dp": 0.0,
+      "reducao_pct": 71.3
+    },
+    "por_id": {
+      "rest_media": 2719.0,
+      "graphql_media": 182.0,
+      "rest_dp": 0.0,
+      "graphql_dp": 0.0,
+      "reducao_pct": 93.3
+    },
+    "composta": {
+      "rest_media": 72737.0,
+      "graphql_media": 3927.0,
+      "rest_dp": 0.0,
+      "graphql_dp": 0.0,
+      "reducao_pct": 94.6
+    }
+  }
+}
